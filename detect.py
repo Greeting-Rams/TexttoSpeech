@@ -15,9 +15,12 @@ import pyttsx3
 
 engine = pyttsx3.init()
 
+voice_counter = 0
+
 def say(text):
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[1].id)
+    engine.setProperty('voice', voices[12].id)
+    engine.setProperty('rate', 128)
     engine.say(text)
     engine.runAndWait()
 
@@ -121,7 +124,27 @@ while True:
 
             # Add label text
             cv2.putText(im, class_name, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
-            say('PERSON DETECTED')
+            voice_counter += 1
+            if (voice_counter%5 ==0):
+                say("Hello I am the Greeting Ram!")
+                time.sleep(3)
+            if(voice_counter%5 ==1):
+                say("I like your shirt!")
+                time.sleep(3)
+            if(voice_counter%5 ==2):
+                say("It's Chilly!")
+                time.sleep(3)
+            if (voice_counter%5 ==3):
+                say("Go RAMS!")
+                time.sleep(3)
+            if (voice_counter%5 ==4):
+                say("Fight on you stalwart Ram Team!")
+                time.sleep(3)
+                
+       # if class_name =="person":
+           # say('Hello, Welcome to Colorado State University!')
+         #   say("Hello I am the greeting ram! BAHAHAHAHA")
+         #   time.sleep(4)
     #trying to see how to print, or get, data from detected images
   
     
